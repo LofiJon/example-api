@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [{ "src": "app.js", "use": "@vercel/node" }],
+  "routes": [
+    {
+      "src": "/metadata",
+      "dest": "/api/metadata.js"
+    },
+    {
+      "src": "/getRows",
+      "dest": "/api/getRows.js"
+    },
+    { "src": "/(.*)", "dest": "app.js" }
+  ]
+}
