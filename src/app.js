@@ -56,8 +56,23 @@ app.get("/get-rows", async (req, res) => {
         valueRenderOption: "UNFORMATTED_VALUE",
         dateTimeRenderOption: "FORMATTED_STRING",
     });
-
-    res.send(getRows.data.values);
+    let results = []
+    const payload = {}
+    payload.quantity = getRows.data.values.length - 1
+    getRows.data.values.forEach((element, index) => {
+        if(index !== 0) {
+            results.push({
+                agree: element[1],
+                studentOfTeacher: element[2],
+                name: element[10],
+                discipline: element[11],
+                age: element[12],
+                graduate: element[13],
+            })
+        }
+    })
+    payload.responses = results
+    res.send(payload);
 });
 
 
